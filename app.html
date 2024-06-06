@@ -1,0 +1,29 @@
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<div id="app">
+    {{ filmes[0].title }}
+</div>
+
+<script type="module">
+  const { createApp } = Vue
+
+  const API_URL = 'https://ghibliapi.vercel.app/films'
+
+  createApp({
+    data: () => ({
+        filmes: []
+
+    }),
+    methods: {
+      async getGhibli () {
+        const response = await fetch(API_URL)
+        const data = await response.json()
+        
+       this.filmes = data 
+      }
+    },
+    created() {
+      this.getGhibli()
+    }
+  }).mount('#app')
+</script>
