@@ -1,7 +1,24 @@
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<link rel="stylesheet" href="./assets/style.css">
 
 <div id="app">
-    {{ filmes[0].title }}
+  <h4 class="type">Cartões</h4>
+
+  <div class="container">
+    <div v-for="film in films">
+      <div class="card">
+        <img :src="film.movie_banner" height="150" width="150" >
+        <p class="card-title">{{ film.original_title_romanised }}</p>
+        <ul class="card-description">
+          <li>Titulo traduzido: {{ film.title }}</li>
+          <li>Diretor: {{ film.director }}</li>
+          <li>Lançamento: {{ film.release_date }}</li>
+          <li>Score Rotten tomato: {{ film.rt_score }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 
 <script type="module">
@@ -11,7 +28,7 @@
 
   createApp({
     data: () => ({
-        filmes: []
+        films: []
 
     }),
     methods: {
@@ -19,7 +36,7 @@
         const response = await fetch(API_URL)
         const data = await response.json()
         
-       this.filmes = data 
+       this.films = data 
       }
     },
     created() {
