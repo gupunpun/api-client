@@ -6,7 +6,7 @@
 
   <div class="container">
     <div v-for="film in films">
-      <Card :film="film"></Card>
+      <card :film="film"></card>
     
     </div>
   </div>
@@ -35,6 +35,9 @@
     },
     created() {
       this.getGhibli()
+    },
+    components:{
+      Card
     }
   }).mount('#app')
 </script>
