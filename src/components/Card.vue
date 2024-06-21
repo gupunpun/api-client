@@ -1,13 +1,5 @@
-export default{
-    name:'Card',
-    props: {
-        film: {
-            type: Object,
-            required: true
-        }
-    },
-    template:` 
-    <div class="card">
+<template>
+  <div class="card">
     <img :src="film.movie_banner" height="150" width="150" >
     <p class="card-title">{{ film.original_title_romanised }}</p>
     <ul class="card-description">
@@ -17,6 +9,25 @@ export default{
       <li>Score Rotten tomato: {{ film.rt_score }}</li>
     </ul>
   </div>
-  `
+  
+</template>
+
+<script>
+export default {
+
+
+    name:'Card',
+    props: {
+        film: {
+            type: Object,
+            required: true
+        }
+    },
+   
 
 }
+</script>
+
+<style>
+
+</style>

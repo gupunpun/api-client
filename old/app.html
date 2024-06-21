@@ -1,0 +1,42 @@
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<link rel="stylesheet" href="./assets/style.css">
+
+<div id="app">
+  <h4 class="type">Cartões</h4>
+
+  <div class="container">
+    <div v-for="anime in animes" :key="anime.id">
+      <card :Anime="Anime"></card>
+    
+    </div>
+  </div>
+</div>
+</div>
+
+<script type="module">
+  const { createApp } = Vue
+  import Card from './components/card.js'
+
+    const API_URL = 'http://localhost:3333/anime';
+
+    createApp({
+        data() {
+            return {
+                animes: []
+            };
+        },
+        methods: {
+            async getAnimes() {
+                const response = await fetch(API_URL);
+                const data = await response.json();
+                this.animes = data;
+            }
+        },
+        created() {
+            this.getAnimes();
+        },
+        components: {
+            Card
+        }
+    }).mount('#app');
+</script>
