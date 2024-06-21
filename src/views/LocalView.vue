@@ -12,7 +12,7 @@
 
 <script>
 import CardLocal from '../components/CardLocal.vue'
-const API_URL = `http://localhost:3334/anime`
+const API_URL = `http://localhost:3333/anime`
 export default {
   data: () => ({
     animes: []
@@ -22,7 +22,7 @@ export default {
       const response = await fetch(API_URL)
       const data = await response.json()
       
-      this.anime = data
+      this.animes = data
     }
   },
   created() {
